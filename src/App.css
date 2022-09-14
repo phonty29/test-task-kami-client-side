@@ -23,6 +23,9 @@ img {
   width: 100%;
   display: block;
 }
+main {
+  display: block;
+}
 .App {
   text-align: center;
 }
