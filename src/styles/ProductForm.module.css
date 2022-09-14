@@ -1,0 +1,45 @@
+/* 
+  ====== 
+  ProductForm
+  ======
+  */
+  .product .productSection {
+    text-align: center;
+  }
+  .product .drink {
+    width: var(--smallWidth);
+    max-width: var(--fullWidth);
+    margin: 0 auto;
+    text-align: left;
+  }
+  .product .drink img {
+    border-radius: var(--mainBorderRadius);
+  }
+  .product .drink p {
+    font-weight: bold;
+    text-transform: capitalize;
+    line-height: 1.8;
+  }
+  .product .drink span {
+    margin-right: 0.5rem;
+  }
+  .product .drinkData {
+    background: var(--primaryLightColor);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--mainBorderRadius);
+    color: var(--primaryColor);
+  }
+  .product .drinkInfo {
+    padding-top: 2rem;
+  }
+  @media screen and (min-width: 992px) {
+    .product .drink {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .product .drinkInfo {
+      padding-top: 0;
+    }
+  }

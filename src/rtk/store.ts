@@ -1,9 +1,7 @@
 import { combineReducers } from "redux";
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import reducer from '../features/cart/slice';
 
 const rootReducer = combineReducers({
-  cart: reducer
 });
 
 export const store = configureStore({
