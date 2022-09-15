@@ -34,6 +34,7 @@ main {
   Buttons 
   ======
   */
+  a
   .btn,
   .btnWhite,
   .btnPrimary {
@@ -70,7 +71,7 @@ main {
     }
   .btnPrimary:hover {
       background: var(--primaryLightColor);
-      color: var(--primaryColor);
+      color: var(--mainWhite);
     }
   .btnBlock {
       width: 100%;
@@ -81,10 +82,11 @@ main {
     }
   .btnDetails {
       padding: 0.25rem 0.4rem;
+      background: #b5283d;
     }
   .btnDetails:hover {
-      background: var(--primaryLightColor);
-      border-color: var(--primaryLightColor);
+      background: #f03753;
+      border-color: #f03753;
     }
   /* 
   ====== 

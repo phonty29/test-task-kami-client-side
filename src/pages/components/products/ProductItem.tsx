@@ -13,10 +13,10 @@ const ProductItem: FC<ProductItemProps> = ({productInfo}) => {
 				<img src={demo} alt={"product image"}/>
 			</div>
 			<div className={'productFooter'}>
-				<h3>{"Text 1"}</h3>
-				<h4>{"Text 2"}</h4>
-				<p>{"Text 3"}</p>
-				<Link to={`/products/edit/${productInfo.id}`} className={'.btn .btnPrimary .btnDetails'}>details</Link>
+				<h3 className={"name"}><span>Name: </span>{"Product 1"}</h3>
+				<h4 className={"price"}><span>Price: </span>{"7000"}</h4>
+				<p className={"status"}><span>Status: </span>{"Active"}</p>
+				<Link to={`/products/edit/${productInfo.id}`} className={'btn btnPrimary btnDetails'}>delete</Link>
 			</div>
 		</article>
 	);

@@ -1,12 +1,11 @@
 export interface productItem {
 	id: string;
-	title: string;
+	name: string;
 	price: number;
-	img: string;
+	mainImg: string;
 	status: string;
 }
 
 export interface ProductState {
 	productItems: productItem[];
-	amount: number;
   }

@@ -1,24 +1,23 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ProductState } from '../types/types';
+import { productItem, ProductState } from '../types/types';
 import { RootState, AppThunk } from './store';
 
 const initialState: ProductState = {
-  productItems: [],
-  amount: 0
+  productItems: []
 };
 
 
-export const slice = createSlice({
-  name: 'product',
+export const productsSlice = createSlice({
+  name: 'products',
   initialState,
   reducers: {
-    fetchItems: (state: ProductState, action) => {
-
-    },
+    fetchProducts: (state: ProductState, action: PayloadAction<Array<productItem>>) => {
+      state.productItems = action.payload;
+    } 
   }
 });
-export const { fetchItems } = slice.actions;
+export const { fetchProducts } = productsSlice.actions;
 
-// export const selectProductState = (state: RootState) => state.product;
+export const selectProductsState = (state: RootState) => state.products;
 
-export default slice.reducer;
+export default productsSlice.reducer;

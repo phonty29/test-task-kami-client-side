@@ -104,3 +104,32 @@
     padding: 0.5rem;
     font-size: 1.2rem;
   }
+  .productFooter {
+    position: relative;
+}
+.productFooter > * { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.productFooter .status { 
+  color: green;
+  font-size: 20px;
+  font-weight: bold;
+}
+.productFooter span { 
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+    letter-spacing: var(--mainSpacing);
+    font-family: var(--slantedFont);
+}
+.productFooter a { 
+    margin-top: 10px;
+    display: block;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
