@@ -6,40 +6,38 @@
   .product .productSection {
     text-align: center;
   }
-  .product .drink {
-    width: var(--smallWidth);
-    max-width: var(--fullWidth);
-    margin: 0 auto;
-    text-align: left;
-  }
-  .product .drink img {
-    border-radius: var(--mainBorderRadius);
-  }
-  .product .drink p {
+ .rdw-dropdown-selectedtext img { 
+    height: 12px;
+    width: 12px;
+ }
+
+ .media .addImg {
+    height: 300px;
+    width: 200px;
+    font-size: 100px;
+    display: grid;
+    place-items: center;
+    background-color: rgb(152, 191, 235);
     font-weight: bold;
-    text-transform: capitalize;
-    line-height: 1.8;
-  }
-  .product .drink span {
-    margin-right: 0.5rem;
-  }
-  .product .drinkData {
-    background: var(--primaryLightColor);
-    padding: 0.25rem 0.5rem;
-    border-radius: var(--mainBorderRadius);
-    color: var(--primaryColor);
-  }
-  .product .drinkInfo {
-    padding-top: 2rem;
-  }
-  @media screen and (min-width: 992px) {
-    .product .drink {
-      display: grid;
-      grid-template-columns: 2fr 3fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    .product .drinkInfo {
-      padding-top: 0;
-    }
-  }
+ }
+ .media .addImg:hover {
+  background-color: rgb(60, 125, 199);
+}
+
+.table {
+  background-color: white;
+  overflow: hidden;
+}
+.table.hidden {
+  display: none;
+}
+.price {
+  background-color: #fff;
+}
+.price-header {
+  display: flex;
+  padding: 0 15px;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1.3rem;
+}
