@@ -4,7 +4,7 @@ const FormContext = createContext(null);
 
 
 const FormProvider = ({children}: any) => {
-	const [product, setProduct] = useState({});
+	const [product, setProduct] = useState({status: true});
     useEffect(() => { 
         console.log(product);
     }, [product]);

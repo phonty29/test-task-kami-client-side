@@ -3,6 +3,6 @@ export interface productItem {
 	content: any;
 	images: any;
 	status: boolean;
-	price?: number;
+	price?: string | number;
 	prices?: number[];
 };
