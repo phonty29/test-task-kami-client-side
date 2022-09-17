@@ -6,14 +6,13 @@ import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import { EditorState, ContentState, convertToRaw } from 'draft-js';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { useFormContext } from './FormProvider';
 
 const FormDescription: FunctionComponent<RouteComponentProps<any>> = props => {
         const [editorState, setEditorState] = useState<EditorState>(EditorState.createEmpty());
-        const [content, setContent] = useState<string>('');
-        const [saving, setSaving] = useState<boolean>(false);
-        useEffect(() => {
-  
-      }, []);        
+        const [content, setContent] = useState<string>('');      
+        const {product, setProduct} = useFormContext();
+
 
         return (
           <Container className="mt-5 mb-5">
@@ -25,6 +24,7 @@ const FormDescription: FunctionComponent<RouteComponentProps<any>> = props => {
                 onEditorStateChange={newState => {
                     setEditorState(newState);
                     setContent(draftToHtml(convertToRaw(newState.getCurrentContent())));
+                    setProduct({...product, content: draftToHtml(convertToRaw(newState.getCurrentContent()))});
                 }}
                 toolbar={{
                     options: ['inline', 'blockType', 'fontSize', 'list', 'textAlign', 'history', 'embedded', 'emoji', 'image'],

@@ -15,7 +15,7 @@
     height: 300px;
     width: 200px;
     font-size: 100px;
-    display: grid;
+    display: inline-grid;
     place-items: center;
     background-color: rgb(152, 191, 235);
     font-weight: bold;
@@ -33,11 +33,30 @@
 }
 .price {
   background-color: #fff;
+  padding: 20px;
 }
 .price-header {
   display: flex;
   padding: 0 15px;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   font-size: 1.3rem;
+}
+#same-price {
+  margin-right: 10px;
+}
+.imgBlock {
+  display: inline-block;
+}
+.imageContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.imageContainer > * {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.upload-images {
+  height: 300px;
+  width: fit-content;
 }
