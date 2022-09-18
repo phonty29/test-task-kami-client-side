@@ -7,10 +7,10 @@ const PriceTable = () => {
 		{city: "Almaty", ref: useRef(null), price: 0}, 
 		{city: "Shymkent", ref: useRef(null), price: 0}
 	]);
+	const {product, setProduct} = useFormContext();
     useEffect(() => {
         setProduct({...product, prices: priceList.map(el => { return {city: el.city, price: el.price}}), price: "Differs"});
-    }, [priceList]);
-	const {product, setProduct} = useFormContext();
+    }, [priceList]);	
 
 	const setPriceForCity = () => {
 		setPriceList( priceList.map( (el, ind, arr) => ({...el, price: el.ref.current.value}) ) );	

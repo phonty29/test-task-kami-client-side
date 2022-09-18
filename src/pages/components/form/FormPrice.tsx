@@ -5,13 +5,15 @@ import { useFormContext } from './FormProvider';
 const FormPrice: FC = () => {
     const checkboxRef = useRef(null);
     const priceRef = useRef(null);
-    const [price, setPrice] = useState(0);
     const [samePrice, isTheSamePrice] = useState(false);
+    const {product, setProduct} = useFormContext();
     useEffect(() => {
         if (samePrice) 
-            setProduct({...product, prices: [], price: price})
-    }, [samePrice, price]);
-    const {product, setProduct} = useFormContext();
+            setProduct({...product, prices: []});
+        if (product.price != 'Differs') {
+            priceRef.current.value = product.price;
+        }
+    }, [samePrice, product._id]);
 
     return (
         <div className="price">
@@ -21,7 +23,7 @@ const FormPrice: FC = () => {
                     <label htmlFor="same-price">The same price for all cities</label>
                 </div>
                 <div> 
-                    <input type="number" placeholder="5000" ref={priceRef} onChange={() => {setPrice(priceRef.current.value);}} />
+                    <input type="number" ref={priceRef} onChange={() => {setProduct({...product, price: priceRef.current.value});}} />
                 </div>
             </div>
             <table className="table">

@@ -3,6 +3,9 @@ import { useFormContext } from './FormProvider';
 
 const FormStatus: FC = () => {
     const {product, setProduct} = useFormContext();
+    useEffect(() => {
+        console.log(product);
+    }, [product]);
 
     return (
         <div className="col-md-5 col-lg-4 order-md-last mt-3 mb-3">
