@@ -1,18 +1,12 @@
 import { FC, useState, useEffect } from 'react';
-import {Link, useParams} from 'react-router-dom';
-import axios from 'axios';
 import FormDescription from './FormDescription';
 import FormMedia from './FormMedia';
 import FormName from './FormName';
 import FormPrice from './FormPrice';
 import FormStatus from './FormStatus';
-import { fetchFields, postProduct, updateProduct } from '../../../rtk/api';
-import { useAppDispatch } from '../../../rtk/hooks';
 import FormProvider, { useFormContext } from './FormProvider';
 
 const FormBody: FC = () => {
-	const { id } = useParams();
-	const dispatch = useAppDispatch();
 
 	return (
 		<FormProvider className={"row g-5 mt-3"}>
@@ -29,7 +23,6 @@ const FormBody: FC = () => {
 					<hr className="my-4"/>
 					<FormPrice/>
 					<hr className="my-4"/>
-					<button className="w-100 btn btn-primary btn-lg" type="submit">Add product</button>
 				</form>
 			</div>
 		</FormProvider>	

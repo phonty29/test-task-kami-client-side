@@ -12,7 +12,7 @@ const FormName: FC = () => {
     return (
         <div className="col-sm-6 w-100">
             <label htmlFor="name" className="form-label">Name of the product</label>
-            <input ref={nameRef} type="text" className="form-control" id="name" placeholder="" defaultValue="" onChange={setName}/>
+            <input defaultValue={product.name} ref={nameRef} type="text" className="form-control" id="name" placeholder="" onChange={setName}/>
         </div>        
     )
 };

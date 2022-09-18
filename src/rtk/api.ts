@@ -1,14 +1,26 @@
 import axios from 'axios';
-import { fetchProduct, clarify } from './slice';
+import { fetchItems, addItem, updateItem, deleteItem } from './slice';
 import { productItem } from '../types/types'; 
 import { AppDispatch } from './store';
 
-export const fetchFields = () => {
+export const fetchProducts = () => {
 	return async function(dispatch: AppDispatch) {
 		try { 
-			let response = await axios.get('products/:id');
-			let productItem: productItem = response.data;
-			dispatch(fetchProduct(productItem));  		
+			let response = await axios.get('products');
+			let productItems: productItem[] = response.data;
+			dispatch(fetchItems(productItems));  		
+		} catch (error) {
+			console.error(error);
+		}
+	}
+};
+
+export const getProduct = (id: number | string) => {
+	return async function(dispatch: AppDispatch) {
+		try { 
+			let response = await axios.get(`product/${id}`);
+			let productItem: productItem = response.data;	
+			return productItem;
 		} catch (error) {
 			console.error(error);
 		}
@@ -25,25 +37,26 @@ export const postProduct = (product: productItem) => {
                     ...product
                 }
             });
-			dispatch(clarify());  		
+			let productItem: productItem = response.data;
+			dispatch(addItem(productItem));  		
 		} catch (error) {
 			console.error(error);
 		}
 	}
 };
 
-export const updateProduct = (id: string, product: productItem) => {
+export const updateProduct = (product: productItem) => {
 	return async function(dispatch: AppDispatch) {
 		try { 
             const response = await axios({
                 method: 'PUT',
-                url: `/products/${id}`,
+                url: `/products/${product._id}`,
                 data: {
                     ...product
                 }
             });
 			let productItem: productItem = response.data;
-			dispatch(fetchProduct(productItem));  		
+			dispatch(updateItem(productItem));  		
 		} catch (error) {
 			console.error(error);
 		}
@@ -53,7 +66,9 @@ export const updateProduct = (id: string, product: productItem) => {
 export const deleteProduct = (id: string) => {
 	return async function(dispatch: AppDispatch) {
 		try { 
-            const response = await axios({ method: 'DELETE', url: `/products/${id}`, });	
+            const response = await axios({ method: 'DELETE', url: `/products/${id}`, });
+			let productItem: productItem = response.data;
+			dispatch(deleteItem(productItem._id));	
 		} catch (error) {
 			console.error(error);
 		}

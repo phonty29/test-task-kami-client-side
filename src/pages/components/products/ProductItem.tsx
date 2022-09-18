@@ -1,24 +1,28 @@
 import { FC } from 'react';
 import {Link} from 'react-router-dom';
-import demo from '../demo.jpeg'
+import { productItem } from '../../../types/types';
 
 interface ProductItemProps {
-	productInfo: {id: number};
+	productInfo: productItem;
 };
 
 const ProductItem: FC<ProductItemProps> = ({productInfo}) => {
+	const deleteItem = () => {
+		console.log(productInfo._id)
+	};
+
 	return (
-		<article className={'product'}>
+		<Link to={`/products/edit/${productInfo._id}`} className={'product'} id={productInfo._id as string}>
 			<div className={'imgContainer'}>
-				<img src={demo} alt={"product image"}/>
+				<img src={productInfo.images[0]} alt={"product image"}/>
 			</div>
 			<div className={'productFooter'}>
-				<h3 className={"name"}><span>Name: </span>{"Product 1"}</h3>
-				<h4 className={"price"}><span>Price: </span>{"7000"}</h4>
-				<p className={"status"}><span>Status: </span>{"Active"}</p>
-				<Link to={`/products/edit/${productInfo.id}`} className={'btn btnPrimary btnDetails'}>delete</Link>
+				<h3 className={"name"}><span>Name: </span>{productInfo.name}</h3>
+				<h4 className={"price"}><span>Price: </span>{productInfo.price}</h4>
+				<p className={"status"}><span>Status: </span>{productInfo.status}</p>
+				<button className={'btn btnPrimary btnDetails'} onClick={deleteItem}>delete</button>
 			</div>
-		</article>
+		</Link>
 	);
 }
 

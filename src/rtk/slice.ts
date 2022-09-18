@@ -1,13 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { productItem } from '../types/types';
+import { productItem, ProductState } from '../types/types';
 import { RootState, AppThunk } from './store';
 
-const initialState: productItem = {
-  name: '',
-	content: null,
-	images: null,
-	status: true,
-	price: 0
+const initialState: ProductState = {
+  items: [],
+  currentPage: 1,
+  currentPageItems: []
 };
 
 
@@ -15,16 +13,33 @@ export const productSlice = createSlice({
   name: 'product',
   initialState,
   reducers: {
-    fetchProduct: (state: productItem, action: PayloadAction<productItem>) => {
-      state = action.payload;
+    fetchItems: (state: ProductState, action: PayloadAction<Array<productItem>>) => {
+      state.items = action.payload;
     },
-    clarify: (state: productItem, action: PayloadAction<productItem>) => {
-      state = initialState;
+    addItem: (state: ProductState, action: PayloadAction<productItem>) => {
+      state.items.push(action.payload);
     },
+    updateItem: (state: ProductState, action: PayloadAction<productItem>) => {
+      state.items = state.items.map(i => {
+        if (action.payload._id == i._id)
+          return action.payload;
+        else return i;
+      });
+    },
+    deleteItem: (state: ProductState, action: PayloadAction<number | string>) => {
+      state.items.filter( i => i._id != action.payload);
+    },
+    turnPage: (state: ProductState, action: PayloadAction<number>) => {
+      state.currentPageItems = state.items.filter((item, index) => {
+        if (index < action.payload*5 && index > (action.payload*4 - 1))
+          return item;
+      });
+    }
   }
 });
-export const { fetchProduct, clarify } = productSlice.actions;
+export const { fetchItems, addItem, updateItem, deleteItem, turnPage } = productSlice.actions;
 
 export const selectProductsState = (state: RootState) => state.products;
 
 export default productSlice.reducer;
+
