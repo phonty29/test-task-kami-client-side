@@ -1,18 +1,14 @@
-import Loading from './Loading';
-import ProductItem from './ProductItem';
-import demo from '../demo.jpeg'
 import { FC, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../rtk/hooks';
+import ProductItem from './ProductItem';
+import demo from '../demo.jpeg'
 import { selectProductsState } from '../../../rtk/slice';
 import { fetchProducts } from '../../../rtk/api';
+import Loading from '../Loading';
 
 const ProductGrid: FC = () => {
-	const dispatch = useAppDispatch();
 	const { currentPageItems } = useAppSelector(selectProductsState);
-	useEffect(() => {
-		dispatch(fetchProducts());
-	}, []);
 	
 	return (
 		(currentPageItems.length ?
@@ -21,8 +17,7 @@ const ProductGrid: FC = () => {
 			<div className={'productsCenter'}>
 				{currentPageItems.map((product, index, array) => <ProductItem key={product._id} productInfo={product}/>)}	
 			</div>
-		</section> : <Loading/>
-		)		
+		</section> : <Loading/>)		
 	);
 };
 

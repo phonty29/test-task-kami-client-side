@@ -29,11 +29,12 @@ const FormProvider = ({children}: any) => {
 		}
 	};
 	const sendData = () => {
-		console.log(sendProduct);
 		if (id) {
 			dispatch(updateProduct(sendProduct));
+			alert("Product was edited")
 		} else {
 			dispatch(postProduct(sendProduct));
+			alert("Product was post")
 		}
 	};
 

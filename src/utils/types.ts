@@ -6,7 +6,7 @@ export interface priceList {
 };
 
 export interface productItem {
-	_id?: number | string;
+	_id?: string;
 	name: string;
 	content: string;
 	imageUrls?: [string];

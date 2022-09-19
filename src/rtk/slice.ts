@@ -26,7 +26,7 @@ export const productSlice = createSlice({
       });
     },
     deleteItem: (state: ProductState, action: PayloadAction<number | string>) => {
-      state.items.filter( i => i._id != action.payload);
+      state.items = state.items.filter( i => i._id != action.payload);
     },
     turnPage: (state: ProductState, action: PayloadAction<number>) => {
       state.currentPageItems = state.items.filter((item, index) => {

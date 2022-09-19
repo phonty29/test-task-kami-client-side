@@ -75,9 +75,10 @@ export const updateProduct = (product: productItem) => {
 export const deleteProduct = (id: string) => {
 	return async function(dispatch: AppDispatch) {
 		try { 
-            const response = await axios({ method: 'DELETE', url: `${URL}/products/${id}`});
+			const response = await axios.delete(`${URL}/products/${id}`);
 			let productItem: productItem = response.data;
 			dispatch(deleteItem(productItem._id));	
+			dispatch(fetchProducts());	
 		} catch (error) {
 			console.error(error);
 		}

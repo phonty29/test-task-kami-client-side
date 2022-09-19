@@ -82,12 +82,58 @@ main {
     }
   .btnDetails {
       padding: 0.25rem 0.4rem;
-      background: #b5283d;
+      background: #b5283d !important;
+      border: none !important;
+      color: white !important;
     }
   .btnDetails:hover {
       background: #f03753;
-      border-color: #f03753;
+      border-color: #f03753 !important;
     }
+    /* 
+====== 
+Navbar
+======
+*/
+.navbar {
+  background: var(--mainWhite);
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--primaryColor);
+  box-shadow: var(--lightShadow);
+}
+.navCenter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: var(--smallWidth);
+  margin: 0 auto;
+  max-width: var(--fullWidth);
+}
+.navLinks {
+  display: flex;
+  align-items: center;
+}
+.navLinks a {
+  text-transform: capitalize;
+  display: inline-block;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  padding: 0.25rem 0.5rem;
+  transition: var(--mainTransition);
+  color: #fff;
+}
+.navLinks a:hover {
+  color: var(--primaryColor);
+}
+.brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
   /* 
   ====== 
   Loader 

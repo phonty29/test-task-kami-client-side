@@ -11,7 +11,6 @@ const FormBody: FC = () => {
 		<FormProvider className={"row g-5 mt-3"}>
 			<FormStatus/>
 			<div className="col-md-7 col-lg-8">
-				<h4 className="mb-3">Add product</h4>
 				<form>
 					<div className="row g-3">
 						<FormName/>
