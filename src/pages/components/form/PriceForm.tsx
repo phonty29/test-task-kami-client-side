@@ -1,19 +1,16 @@
-import { useState, useRef, useEffect } from 'react';
+//@ts-nocheck
+import { useState, useEffect } from 'react';
 import { useFormContext} from './FormProvider'
 
 const PriceTable = () => {
-	const [priceList, setPriceList] = useState([
-		{city: "Astana", ref: useRef(null), price: 0}, 
-		{city: "Almaty", ref: useRef(null), price: 0}, 
-		{city: "Shymkent", ref: useRef(null), price: 0}
-	]);
-	const {product, setProduct} = useFormContext();
-    useEffect(() => {
-        setProduct({...product, prices: priceList.map(el => { return {city: el.city, price: el.price}}), price: "Differs"});
-    }, [priceList]);	
+	const {sendProduct, setSendProduct, fetchedProduct, setFetchedProduct} = useFormContext();
 
-	const setPriceForCity = () => {
-		setPriceList( priceList.map( (el, ind, arr) => ({...el, price: el.ref.current.value}) ) );	
+	const setPriceForCity = (event, currentIndex) => {	
+		setSendProduct({...sendProduct, prices: sendProduct.prices.map((el, ind, arr) => {
+			if (currentIndex == ind) 
+				return {...el, price: event.target.value};
+			return el;
+		})})
 	};
 
 	return (
@@ -22,10 +19,10 @@ const PriceTable = () => {
 				<th>City</th>
 				<th>Price</th>
 			</tr>
-			{priceList.map((element, index, array) => (
+			{sendProduct.prices.map((element, index, array) => (
                 <tr key={index}>
                     <td>{element.city}</td>
-                    <td><input type="number" ref={element.ref} onChange={setPriceForCity} /></td>
+                    <td><input key={fetchedProduct.prices[index]._id} defaultValue={fetchedProduct.prices[index].price} type="number" onChange={(e) => {setPriceForCity(e, index)}} /></td>
                 </tr>
 			))}						
 		</>

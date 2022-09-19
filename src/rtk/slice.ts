@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { productItem, ProductState } from '../types/types';
+import { productItem, ProductState } from '../utils/types';
 import { RootState, AppThunk } from './store';
 
 const initialState: ProductState = {

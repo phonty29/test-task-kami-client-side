@@ -10,15 +10,13 @@ import { useFormContext } from './FormProvider';
 
 const FormDescription: FC = ()  => {   
         const [editorState, setEditorState] = useState<EditorState>(EditorState.createEmpty());
-        const {product, setProduct} = useFormContext();
-
+        const {sendProduct, setSendProduct, fetchedProduct, setFetchedProduct} = useFormContext();
         useEffect (() => {
-            const contentBlock = htmlToDraft(product.content);
+            const contentBlock = htmlToDraft(fetchedProduct.content);
             const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
             const editorState = EditorState.createWithContent(contentState);
             setEditorState(editorState);
-        }, []);
-
+        }, [fetchedProduct]);
 
         return (
           <Container className="mt-5 mb-5">
@@ -29,7 +27,7 @@ const FormDescription: FC = ()  => {
                 editorClassName="card-body"
                 onEditorStateChange={newState => {
                     setEditorState(newState);
-                    setProduct({...product, content: draftToHtml(convertToRaw(newState.getCurrentContent()))});
+                    setSendProduct({...sendProduct, content: draftToHtml(convertToRaw(newState.getCurrentContent()))});
                 }}
                 toolbar={{
                     options: ['inline', 'blockType', 'fontSize', 'list', 'textAlign', 'history', 'embedded', 'emoji', 'image'],

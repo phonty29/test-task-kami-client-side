@@ -7,7 +7,6 @@ import FormStatus from './FormStatus';
 import FormProvider, { useFormContext } from './FormProvider';
 
 const FormBody: FC = () => {
-
 	return (
 		<FormProvider className={"row g-5 mt-3"}>
 			<FormStatus/>

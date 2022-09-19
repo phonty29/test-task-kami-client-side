@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import {Link} from 'react-router-dom';
-import { productItem } from '../../../types/types';
+import { productItem } from '../../../utils/types';
 import image from './no-photo.png';
 
 interface ProductItemProps {
