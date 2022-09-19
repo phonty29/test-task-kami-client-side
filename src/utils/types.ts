@@ -9,6 +9,7 @@ export interface productItem {
 	_id?: number | string;
 	name: string;
 	content: string;
+	imageUrls?: [string];
 	images?: any;
 	status: boolean;
 	price?: number;
@@ -23,6 +24,7 @@ export interface ProductState {
 export const defaultProduct : productItem = {
 	name: "",
 	content: "",
+	imageUrls: [''],
 	images: [],
 	status: true,
 	price: 0,

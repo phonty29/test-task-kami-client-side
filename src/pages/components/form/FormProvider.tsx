@@ -22,7 +22,7 @@ const FormProvider = ({children}: any) => {
 		try {
 			const product = await getProduct(id);
 			console.log(product);
-			setSendProduct(product);
+			setSendProduct({...product, images: [], imageUrls: []});
 			setFetchedProduct(product);
 		} catch (error) {
 			console.log(error);

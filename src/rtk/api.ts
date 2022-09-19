@@ -37,7 +37,7 @@ export const postProduct = (product: productItem) => {
 			formData.append('status', product.status);
 			formData.append('content', product.content);
 			product.images.forEach((image) => {
-				formData.append('images', image);
+				formData.append('imageUrls', image);
 			});
 			formData.append('prices', JSON.stringify(product.prices));
 			formData.append('price', product.price);
@@ -58,7 +58,9 @@ export const updateProduct = (product: productItem) => {
 			formData.append('name', product.name);
 			formData.append('status', product.status);
 			formData.append('content', product.content);
-			formData.append('images', product.images);
+			product.images.forEach((image) => {
+				formData.append('imageUrls', image);
+			});
 			formData.append('prices', JSON.stringify(product.prices));
 			formData.append('price', product.price);
 			const response = await axios.put(`${URL}/products/${product._id}`, formData, {headers: {"Content-Type": "multipart/form-data"}});
