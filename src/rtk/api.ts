@@ -36,7 +36,9 @@ export const postProduct = (product: productItem) => {
 			formData.append('name', product.name);
 			formData.append('status', product.status);
 			formData.append('content', product.content);
-			formData.append('images', product.images);
+			product.images.forEach((image) => {
+				formData.append('images', image);
+			});
 			formData.append('prices', JSON.stringify(product.prices));
 			formData.append('price', product.price);
 			const response = await axios.post(`http://localhost:1337/products`, formData, {headers: {"Content-Type": "multipart/form-data"}});
