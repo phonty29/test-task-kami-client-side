@@ -8,14 +8,21 @@ const FormMedia: FC = () => {
     const {sendProduct, setSendProduct, fetchedProduct, setFetchedProduct} = useFormContext();
     useEffect(() => {
         if (sendProduct.images.length < 1) return;
-        const newImageUrls: string[] = [];
-        sendProduct.images.forEach(image => newImageUrls.push(URL.createObjectURL(image)));
-        setUrls(newImageUrls);
+        if (typeof sendProduct.images[0] != 'string') {
+            const newImageUrls: string[] = [];
+            sendProduct.images.forEach(image => newImageUrls.push(URL.createObjectURL(image)));
+            setUrls(newImageUrls);
+        }
     }, [sendProduct.images]);
 
     return (
         <div className={"media"}>
             <div className='imageContainer'>
+                {fetchedProduct.images.length > 1 && fetchedProduct.images.map((imageUrl, index, array) => (
+                    <div key={index} className={"imgBlock"}>
+                        <img src={`/${imageUrl}`} className="img-thumbnail upload-images" alt="product-image"/>
+                    </div>
+                ))}
                 {imageUrls.map((imageUrl, index, array) => (
                     <div key={index} className={"imgBlock"}>
                         <img src={imageUrl} className="img-thumbnail upload-images" alt="product-image"/>
