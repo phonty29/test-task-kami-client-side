@@ -14,11 +14,8 @@ const FormProvider = ({children}: any) => {
 	const dispatch = useAppDispatch();
 	const { id } = useParams();
     useEffect( () => { 
-        if (id) {
+        if (id) 
 			fetchData(id);
-		}
-		else {
-		}
     }, []);
 
 	const fetchData = async (id: number | string) => {
