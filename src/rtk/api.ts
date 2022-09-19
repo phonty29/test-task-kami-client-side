@@ -4,10 +4,12 @@ import { fetchItems, addItem, updateItem, deleteItem, turnPage } from './slice';
 import { productItem } from '../utils/types'; 
 import { AppDispatch } from './store';
 
+const URL = 'http://localhost:1337';
+
 export const fetchProducts = () => {
 	return async function(dispatch: AppDispatch) {
 		try { 
-			let response = await axios.get('http://localhost:1337/products');
+			let response = await axios.get(`${URL}/products`);
 			let productItems: productItem[] = response.data;
 			dispatch(fetchItems(productItems));  		
 			dispatch(turnPage(1));  		
@@ -19,7 +21,7 @@ export const fetchProducts = () => {
 
 export const getProduct = async (id: number | string) => {
 		try { 
-			let response = await axios.get(`http://localhost:1337/products/${id}`);
+			let response = await axios.get(`${URL}/products/${id}`);
 			let productItem: productItem = response.data;
 			return productItem;
 		} catch (error) {
@@ -57,7 +59,7 @@ export const updateProduct = (product: productItem) => {
 			formData.append('images', product.images);
 			formData.append('prices', JSON.stringify(product.prices));
 			formData.append('price', product.price);
-			const response = await axios.put(`http://localhost:1337/products/${product._id}`, formData, {headers: {"Content-Type": "multipart/form-data"}});
+			const response = await axios.put(`${URL}/products/${product._id}`, formData, {headers: {"Content-Type": "multipart/form-data"}});
 			let productItem: productItem = response.data;
 			dispatch(updateItem(productItem));  		
 		} catch (error) {
@@ -69,7 +71,7 @@ export const updateProduct = (product: productItem) => {
 export const deleteProduct = (id: string) => {
 	return async function(dispatch: AppDispatch) {
 		try { 
-            const response = await axios({ method: 'DELETE', url: `http://localhost:1337/products/${id}`});
+            const response = await axios({ method: 'DELETE', url: `${URL}/products/${id}`});
 			let productItem: productItem = response.data;
 			dispatch(deleteItem(productItem._id));	
 		} catch (error) {
