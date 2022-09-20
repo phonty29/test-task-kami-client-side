@@ -15,7 +15,7 @@ const Products: FC = () => {
 	}, []);
 
 	return (
-		<main className={"container"}>
+		<main>
 			<Navbar/>
 			<Search/>
 			<ProductGrid/>

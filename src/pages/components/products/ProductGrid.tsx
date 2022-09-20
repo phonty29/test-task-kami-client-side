@@ -9,10 +9,10 @@ import Loading from '../Loading';
 
 const ProductGrid: FC = () => {
 	const { currentPageItems } = useAppSelector(selectProductsState);
-	
+ 
 	return (
 		(currentPageItems.length ?
-		<section className={'section'}>
+		<section className={'section container'}>
 			<h2 className={'sectionTitle'}>products</h2>
 			<div className={'productsCenter'}>
 				{currentPageItems.map((product, index, array) => <ProductItem key={product._id} productInfo={product}/>)}	
