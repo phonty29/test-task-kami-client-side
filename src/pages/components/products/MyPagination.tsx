@@ -14,11 +14,7 @@ function MyPagination() {
 
   return (
     <Pagination>
-      <Pagination.First />
-      <Pagination.Prev />
       {pages.map((page, index, array) => (<Pagination.Item key={index} className={currentPage == page+1 && "active"} onClick={(e) => {dispatch(turnPage(page+1))}}>{page+1}</Pagination.Item>))}
-      <Pagination.Next />
-      <Pagination.Last />
     </Pagination>
   );
 }
