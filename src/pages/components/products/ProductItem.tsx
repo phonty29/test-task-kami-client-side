@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import {Link} from 'react-router-dom';
-import { productItem } from '../../../utils/types';
+import { productItem } from '../../../types/types';
 import { deleteProduct } from '../../../rtk/api';
 import image from './no-photo.png';
 import { useAppDispatch } from '../../../rtk/hooks';

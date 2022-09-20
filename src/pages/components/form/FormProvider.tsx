@@ -4,7 +4,7 @@ import {createContext, useContext, useState, useEffect} from 'react';
 import { useParams} from 'react-router-dom';
 import { getProduct, postProduct, updateProduct } from '../../../rtk/api';
 import { useAppDispatch } from '../../../rtk/hooks';
-import { defaultProduct } from '../../../utils/types';
+import { defaultProduct } from '../../../types/types';
 
 const FormContext = createContext(null);
 

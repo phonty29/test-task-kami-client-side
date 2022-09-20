@@ -139,7 +139,9 @@ Navbar
   Loader 
   ======
   */
-
+.loader-container {
+  height: 300px;
+}
 .loader,
 .loader:before,
 .loader:after {

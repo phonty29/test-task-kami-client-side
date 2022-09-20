@@ -8,8 +8,8 @@ import { fetchProducts } from '../../../rtk/api';
 import Loading from '../Loading';
 
 const ProductGrid: FC = () => {
-	const { currentPageItems } = useAppSelector(selectProductsState);
- 
+	const { currentPageItems, searchingItems } = useAppSelector(selectProductsState);
+
 	return (
 		(currentPageItems.length ?
 		<section className={'section container'}>

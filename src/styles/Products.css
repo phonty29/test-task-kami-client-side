@@ -133,6 +133,10 @@
   justify-content: center;
   align-items: center;
 }
+.page-link {
+  padding: 12px 24px;
+  font-size: 20px;
+}
 .statusActive {
   color: green !important;
 }

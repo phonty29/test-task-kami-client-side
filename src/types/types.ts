@@ -18,6 +18,7 @@ export interface productItem {
 
 export interface ProductState {
 	items: productItem[];
+	searchingItems: productItem[];
 	currentPage: number;
 	currentPageItems: productItem[];
 };
