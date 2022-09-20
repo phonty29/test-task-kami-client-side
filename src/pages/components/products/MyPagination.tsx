@@ -5,7 +5,7 @@ import { selectProductsState, turnPage } from '../../../rtk/slice';
 
 function MyPagination() {
   const dispatch = useAppDispatch();
-  const { items } = useAppSelector(selectProductsState);
+  const { items, currentPage } = useAppSelector(selectProductsState);
   const [pages, setPages] = useState([1]);
   useEffect(() => {
     const pageNumber = Math.ceil(items.length/5);
@@ -16,7 +16,7 @@ function MyPagination() {
     <Pagination>
       <Pagination.First />
       <Pagination.Prev />
-      {pages.map((page, index, array) => (<Pagination.Item key={index} onClick={(e) => {dispatch(turnPage(page+1))}}>{page+1}</Pagination.Item>))}
+      {pages.map((page, index, array) => (<Pagination.Item key={index} className={currentPage == page+1 && "active"} onClick={(e) => {dispatch(turnPage(page+1))}}>{page+1}</Pagination.Item>))}
       <Pagination.Next />
       <Pagination.Last />
     </Pagination>

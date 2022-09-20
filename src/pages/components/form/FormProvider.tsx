@@ -21,7 +21,6 @@ const FormProvider = ({children}: any) => {
 	const fetchData = async (id: number | string) => {
 		try {
 			const product = await getProduct(id);
-			console.log(product);
 			setSendProduct({...product, images: [], imageUrls: []});
 			setFetchedProduct(product);
 		} catch (error) {

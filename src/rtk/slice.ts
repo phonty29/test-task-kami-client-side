@@ -4,6 +4,7 @@ import { RootState, AppThunk } from './store';
 
 const initialState: ProductState = {
   items: [],
+  currentPage: 1,
   currentPageItems: []
 };
 
@@ -29,6 +30,7 @@ export const productSlice = createSlice({
       state.items = state.items.filter( i => i._id != action.payload);
     },
     turnPage: (state: ProductState, action: PayloadAction<number>) => {
+      state.currentPage = action.payload;
       state.currentPageItems = state.items.filter((item, index) => {
         if (index < action.payload*5 && index >= (action.payload*5-5))
           return item;
