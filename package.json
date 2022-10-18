@@ -54,7 +54,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:1337",
+  "proxy": "https://evening-oasis-57662.herokuapp.com",
   "devDependencies": {
     "@types/draftjs-to-html": "^0.8.1",
     "@types/html-to-draftjs": "^1.4.0",
