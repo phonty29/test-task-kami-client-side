@@ -9,13 +9,15 @@ interface ProductItemProps {
 	productInfo: productItem;
 };
 
+const api = "https://evening-oasis-57662.herokuapp.com";
+
 const ProductItem: FC<ProductItemProps> = ({productInfo}) => {
 	const dispatch = useAppDispatch();
 
 	return (
 		<Link to={`/products/edit/${productInfo._id}`} className={'product'} id={productInfo._id as string}>
 			<div className={'imgContainer'}>
-				{productInfo.imageUrls[0] ? <img src={`/${productInfo.imageUrls[0]}`} alt={"product image"}/> : <img src={image} alt={"product image"}/>}
+				{productInfo.imageUrls[0] ? <img src={`${api}/${productInfo.imageUrls[0]}`} alt={"product image"}/> : <img src={image} alt={"product image"}/>}
 			</div>
 			<div className={'productFooter'}>
 				<h3 className={"name"}><span>Name: </span>{productInfo.name}</h3>
