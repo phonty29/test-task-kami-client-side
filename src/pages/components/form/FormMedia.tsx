@@ -2,6 +2,8 @@
 import { FC, useState, useRef, useEffect, SetStateAction } from 'react';
 import { useFormContext } from './FormProvider';
 
+const api = "https://evening-oasis-57662.herokuapp.com";
+
 const FormMedia: FC = () => {
     const [imageUrls, setUrls] = useState([]);
     const inputRef = useRef(null);
@@ -18,7 +20,7 @@ const FormMedia: FC = () => {
             <div className='imageContainer'>
                 {fetchedProduct.imageUrls[0] && fetchedProduct.imageUrls.map((imageUrl, index, array) => (
                     <div key={index} className={"imgBlock"}>
-                        <img src={`/${imageUrl}`} className="img-thumbnail upload-images" alt="product-image"/>
+                        <img src={`${api}/${imageUrl}`} className="img-thumbnail upload-images" alt="product-image"/>
                     </div>
                 ))}
                 {sendProduct.imageUrls[0] && sendProduct.imageUrls.map((imageUrl, index, array) => (
